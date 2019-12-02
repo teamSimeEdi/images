@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>si.RSOteam8</groupId>
+    <artifactId>images</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>api</module>
+        <module>lib</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <kumuluzee.version>3.5.0</kumuluzee.version>
+        <kumuluzee-rest.version>1.2.3</kumuluzee-rest.version>
+        <!-->
+       <kumuluzee-discovery.version>1.1.1</kumuluzee-discovery.version>
+       <kumuluzee-health.version>2.1.0</kumuluzee-health.version>
+       <kumuluzee-config-mp.version>1.3.0</kumuluzee-config-mp.version>
+       <kumuluzee-metrics.version>2.0.1</kumuluzee-metrics.version>
+       <kumuluzee-logs.version>1.3.1</kumuluzee-logs.version>
+       <-->
+   </properties>
+
+   <dependencyManagement>
+       <dependencies>
+           <dependency>
+               <groupId>com.kumuluz.ee</groupId>
+               <artifactId>kumuluzee-bom</artifactId>
+               <version>${kumuluzee.version}</version>
+               <type>pom</type>
+               <scope>import</scope>
+           </dependency>
+           <!-->
+           <dependency>
+               <groupId>com.kumuluz.ee.discovery</groupId>
+               <artifactId>kumuluzee-discovery-etcd</artifactId>
+               <version>${kumuluzee-discovery.version}</version>
+           </dependency>
+           <dependency>
+               <groupId>com.kumuluz.ee.discovery</groupId>
+               <artifactId>kumuluzee-discovery-consul</artifactId>
+               <version>${kumuluzee-discovery.version}</version>
+           </dependency>
+
+           <dependency>
+               <groupId>com.kumuluz.ee.health</groupId>
+               <artifactId>kumuluzee-health</artifactId>
+               <version>${kumuluzee-health.version}</version>
+           </dependency>
+           <dependency>
+               <groupId>com.kumuluz.ee.config</groupId>
+               <artifactId>kumuluzee-config-mp</artifactId>
+               <version>${kumuluzee-config-mp.version}</version>
+           </dependency>
+           <dependency>
+               <groupId>com.kumuluz.ee.metrics</groupId>
+               <artifactId>kumuluzee-metrics-core</artifactId>
+               <version>${kumuluzee-metrics.version}</version>
+           </dependency>
+
+           <dependency>
+               <artifactId>kumuluzee-logs-log4j2</artifactId>
+               <groupId>com.kumuluz.ee.logs</groupId>
+               <version>${kumuluzee-logs.version}</version>
+           </dependency>
+           <-->
+            <dependency>
+                <groupId>si.RSOteam8</groupId>
+                <artifactId>images-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>si.RSOteam8</groupId>
+                <artifactId>images-lib</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+        </dependencies>
+        </dependencyManagement>
+        <!-->
+        <repositories>
+            <repository>
+                <id>sonatype-snapshots</id>
+                <name>Sonatype Snapshots</name>
+                <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                <releases>
+                    <enabled>false</enabled>
+                </releases>
+                <snapshots>
+                    <enabled>true</enabled>
+                </snapshots>
+            </repository>
+        </repositories>
+        <-->
+
+</project>
