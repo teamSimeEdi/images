@@ -19,7 +19,7 @@ public class ImageResource {
         Image image = new Image();
         image.setId("1");
         image.setImagename("https://en.wikipedia.org/wiki/Lenna#/media/File:Lenna_(test_image).png");
-
+        images.add(image);
         return Response.ok(images).build();
     }
 
