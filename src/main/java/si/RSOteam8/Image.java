@@ -3,6 +3,7 @@ package si.RSOteam8;
 public class Image {
     private String id;
     private String imagename;
+    private String url;
 
     public String getId() {
         return id;
@@ -20,4 +21,11 @@ public class Image {
         this.imagename = imagename;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

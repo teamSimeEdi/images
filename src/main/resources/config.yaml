@@ -1,0 +1,93 @@
+kumuluzee:
+  name: images
+  env:
+    name: dev
+  version: 1.0.0
+  server:
+    base-url: http://localhost:8083
+    http:
+      port: 8083
+  datasources:
+    - jndi-name: jdbc/postgres
+      connection-url: jdbc:postgresql://35.227.143.207:5432/images
+      imagename: postgres
+      password: R2jDsPtgGbCC
+      max-pool-size: 20
+  config:
+    etcd:
+      hosts: http://etcd:2379
+  discovery:
+    etcd:
+      hosts: http://etcd:2379
+
+  health:
+    checks:
+      etcd-health-check:
+        connection-url: http://etcd:2379/health
+  logs:
+    config-file: '<?xml version="1.0" encoding="UTF-8"?>
+      <Configuration name="images">
+      <Appenders>
+      <Console name="console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d %p %marker %m %X %ex %n"/>
+      </Console>
+      <Socket name="logstash" host="4b9dc93a-9946-44f6-9257-fb7c1519afbc-ls.logit.io" port="11774" protocol="tcp">
+      <JSONLayout complete="false" compact="true" eventEol="true" charset="UTF-8" properties="true"/>
+      </Socket>
+      </Appenders>
+      <Loggers>
+      <Root level="all">
+      <AppenderRef ref="console" level="info"/>
+      <AppenderRef ref="logstash" level="trace"/>
+      </Root>
+      </Loggers>
+      </Configuration>'
+  #health:
+  #  checks:
+  #    data-source-health-check:
+  #      type: liveness
+  #      jndi-name: jdbc/ImageMetadataDS
+  #    etcd-health-check:
+  #      connection-url: http://192.168.29.109:2379/health
+  metrics:
+    #servlet:
+    #  enabled: true
+    #  mapping: /images-metrics
+    web-instrumentation:
+      - name: images-endpoint
+        url-pattern: /v1/images/*
+  #streaming:
+  #  kafka:
+  #    producer:
+  #      bootstrap-servers: ark-01.srvs.cloudkafka.com:9094
+  #      acks: all
+  #      retries: 0
+  #      batch-size: 16384
+  #      linger-ms: 1
+  #      buffer-memory: 33554432
+  #      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+  #      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  #      security-protocol: SASL_SSL
+  #      sasl-mechanism: SCRAM-SHA-256
+  #      group-id: newer
+  #      enable-auto-commit: true
+  #      auto-commit-interval-ms: 1000
+  #      auto-offset-reset: earliest
+  #      session-timeout-ms: 30000
+  #      sasl-jaas-config:
+  #rest-client:
+  #  registrations:
+  #    - class: image-processing-api
+  #      url: http://localhost:8082/v1
+  #      read-timeout: 5000
+config-properties:
+  test: true
+  health-demo: true
+  dburl: jdbc:postgresql://35.227.143.207:5432/images
+  dbuser: postgres
+  dbpass: R2jDsPtgGbCC
+  bucketname: "images-rsoteam8"
+app-properties:
+    amazon-rekognition:
+    access-key:
+    secret-key:

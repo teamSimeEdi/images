@@ -4,10 +4,10 @@ RUN mkdir /app
 
 WORKDIR /app
 
-ADD ./api/target/images-api-1.0.0-SNAPSHOT.jar /app
+ADD ./target/images-1.0.0-SNAPSHOT.jar /app
 #ADD ./api/target /app
 
-EXPOSE 8081
+EXPOSE 8083
 
-CMD ["java", "-jar", "images-api-1.0.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "images-1.0.0-SNAPSHOT.jar"]
 #CMD ["java", "-server", "-cp", "classes:dependency/*", "com.kumuluz.ee.EeApplication"]
