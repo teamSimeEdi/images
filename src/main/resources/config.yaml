@@ -4,9 +4,9 @@ kumuluzee:
     name: dev
   version: 1.0.0
   server:
-    base-url: http://localhost:8083
+    base-url: http://localhost:8089
     http:
-      port: 8083
+      port: 8089
   datasources:
     - jndi-name: jdbc/postgres
       connection-url: jdbc:postgresql://35.227.143.207:5432/images
@@ -15,15 +15,15 @@ kumuluzee:
       max-pool-size: 20
   config:
     etcd:
-      hosts: http://etcd:2379
+      hosts: http://192.168.99.100:2379
   discovery:
     etcd:
-      hosts: http://etcd:2379
+      hosts: http://192.168.99.100:2379
 
   health:
     checks:
       etcd-health-check:
-        connection-url: http://etcd:2379/health
+        connection-url: http://192.168.99.100:2379/health
   logs:
     config-file: '<?xml version="1.0" encoding="UTF-8"?>
       <Configuration name="images">
